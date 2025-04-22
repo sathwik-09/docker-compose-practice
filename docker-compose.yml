@@ -1,21 +1,13 @@
 version: '3.9'
 
 services:
-  postgres:
-    image: postgres
-    ports:
-      -5432:5432
-
   user_app:
-    build: 
-      network: host
+    build:
       context: ./
       dockerfile: Dockerfile
 
     environment:
-      - DATABASE_URL=postgresql://neondb_owner:npg_a7GX0dTtnuDO@ep-polished-bush-a4ql80ly-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require
+      - DATABASE_URL=postgresql://<username>:<password>@ep-polished-bush-a4ql80ly-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require
+
     ports:
-      - 3000:3000
-      
-    depends_on:
-      - postgres
+      - "3000:3000"
